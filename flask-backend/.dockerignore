@@ -1,0 +1,26 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__
+
+# Ignore the virtual environment directory
+venv/
+.env/
+
+# Ignore database files (if not needed in the image)
+db.sqlite3
+
+# Ignore log files
+*.log
+
+# Ignore system files
+.DS_Store
+*.swp
+
+# Ignore tests or temporary files
+tests/
+temp/
+
+# Ignore Dockerfile itself and any other configuration files you don't need in the image
+Dockerfile
+*.md

@@ -1,0 +1,29 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__
+
+# Ignore the virtual environment directory
+venv/
+.env/
+
+# Ignore database files (you might want to ignore this if you don't want to commit them)
+db.sqlite3
+
+# Ignore logs and other temporary files
+*.log
+*.swp
+
+# Ignore tests
+tests/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore sensitive files
+*.env
+
+# Ignore Docker-related files if you don't need to push them
+Dockerfile
+docker-compose.yml
