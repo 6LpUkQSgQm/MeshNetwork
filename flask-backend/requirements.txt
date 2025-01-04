@@ -17,7 +17,7 @@ Flask-Cors==3.0.10
 python-dotenv==0.21.0
 
 # WSGI server for production
-gunicorn==20.1.0
+gunicorn==22.0.0
 
 # Werkzeug (pas besoin de forcer une version spécifique)
 # Flask inclut automatiquement la version correcte
