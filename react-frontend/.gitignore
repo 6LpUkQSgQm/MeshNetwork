@@ -18,3 +18,5 @@ yarn-error.log
 
 # Ignore environment files (if you don't want them in the repo)
 .env
+
+certs

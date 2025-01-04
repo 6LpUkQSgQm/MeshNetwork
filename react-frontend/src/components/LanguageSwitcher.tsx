@@ -1,12 +1,12 @@
 import React from "react";
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher: React.FC = () => {
   const { i18n, t } = useTranslation();
 
-  const handleChangeLanguage = (event) => {
-    const selectedLanguage = event.target.value;
+  const handleChangeLanguage = (event: SelectChangeEvent<string>) => {
+    const selectedLanguage = event.target.value as string;
     i18n.changeLanguage(selectedLanguage);
   };
 

@@ -1,10 +1,12 @@
+import React from "react";
 import { Avatar, Button, Typography, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 
-const UserInfo = () => {
+const UserInfo: React.FC = () => {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
+
   return (
     <Box
       sx={{

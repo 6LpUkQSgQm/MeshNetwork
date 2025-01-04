@@ -20,7 +20,3 @@ db.sqlite3
 # Ignore tests or temporary files
 tests/
 temp/
-
-# Ignore Dockerfile itself and any other configuration files you don't need in the image
-Dockerfile
-*.md

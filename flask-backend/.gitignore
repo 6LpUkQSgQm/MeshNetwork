@@ -24,6 +24,4 @@ tests/
 # Ignore sensitive files
 *.env
 
-# Ignore Docker-related files if you don't need to push them
-Dockerfile
-docker-compose.yml
+certs/

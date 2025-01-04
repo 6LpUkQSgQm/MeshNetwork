@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { useTheme } from "../context/ThemeContext";
 import { useTranslation } from "react-i18next";
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher: React.FC = () => {
   const { darkMode, toggleTheme } = useTheme();
   const { t } = useTranslation();
 

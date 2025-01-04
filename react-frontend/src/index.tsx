@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { MessageProvider } from "./context/MessageContext";
 import { ThemeProvider as CustomThemeProvider } from "./context/ThemeContext";
@@ -20,7 +20,9 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <ErrorProvider>

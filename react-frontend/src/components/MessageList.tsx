@@ -3,7 +3,18 @@ import { List, ListItem, Card, CardContent, Typography } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "@mui/material/styles";
 
-const MessageList = ({ messages }) => {
+interface Message {
+  id: string;
+  content: string;
+  username: string;
+  timestamp: number;
+}
+
+interface MessageListProps {
+  messages: Message[];
+}
+
+const MessageList: React.FC<MessageListProps> = ({ messages }) => {
   const { user } = useAuth();
   const theme = useTheme();
 
