@@ -11,7 +11,7 @@ Flask-Migrate==3.1.0
 marshmallow==3.14.1
 
 # CORS handling
-Flask-Cors==3.0.10
+Flask-Cors==4.0.2
 
 # Environment variable management
 python-dotenv==0.21.0
