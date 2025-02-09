@@ -1,4 +1,3 @@
-// filepath: /Users/julienchapron/Documents/RESEAU_MESH_ESP32/MeshNetwork/react-frontend/src/components/Messages.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -50,7 +49,7 @@ const Messages: React.FC = () => {
   useEffect(() => {
     if (token && user) {
       socket.on("new_message", (newMessage: Message) => {
-        setMessages((prevMessages) => {
+        setMessages((prevMessages = []) => {
           const isDuplicate = prevMessages.some(
             (msg) => msg.id === newMessage.id
           );
@@ -58,7 +57,6 @@ const Messages: React.FC = () => {
             console.log("Duplicate message, skipping...");
             return prevMessages;
           }
-          console.log(newMessage, user);
           if (newMessage.username !== user.username) {
             triggerPushNotification(newMessage.content, newMessage.username);
           }
@@ -135,7 +133,7 @@ const Messages: React.FC = () => {
   return (
     <div style={{ padding: "16px" }}>
       <InfiniteScroll
-        dataLength={messages.length}
+        dataLength={messages?.length}
         next={loadMoreMessages}
         hasMore={hasMore}
         loader={

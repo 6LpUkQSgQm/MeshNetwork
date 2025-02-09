@@ -14,7 +14,7 @@ interface MessageListProps {
   messages: Message[];
 }
 
-const MessageList: React.FC<MessageListProps> = ({ messages }) => {
+const MessageList: React.FC<MessageListProps> = ({ messages = [] }) => {
   const { user } = useAuth();
   const theme = useTheme();
 

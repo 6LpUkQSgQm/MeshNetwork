@@ -10,8 +10,8 @@ services:
       - HTTPS=true
       - SSL_CRT_FILE=/app/certs/cert.pem
       - SSL_KEY_FILE=/app/certs/key.pem
-      - REACT_APP_API_BASE_URL=https://0.0.0.0:5003/api
-      - REACT_APP_API_URL=https://0.0.0.0:5003
+      - REACT_APP_API_BASE_URL=https://raspberrypi.local:5003/api
+      - REACT_APP_API_URL=https://raspberrypi.local:5003
     volumes:
       - ./react-frontend/certs:/app/certs:ro
     depends_on:
@@ -33,7 +33,7 @@ services:
       - PROD_DATABASE_URI=postgresql://postgres:password@db:5432/mydb
       - SQLALCHEMY_DATABASE_URI=postgresql://postgres:password@db:5432/mydb
       - SECRET_KEY=your-secret-key
-      - CORS_ALLOWED_ORIGINS=https://localhost:3000
+      - CORS_ALLOWED_ORIGINS=https://raspberrypi.local:3000
     depends_on:
       db:
         condition: service_healthy

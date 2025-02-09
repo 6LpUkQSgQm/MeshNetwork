@@ -17,7 +17,7 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     FLASK_ENV = "production"
     DEBUG = True
-    CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "https://localhost:3000")
+    CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "https://raspberrypi.local:3000")
     SQLALCHEMY_DATABASE_URI = os.getenv(
         "PROD_DATABASE_URI", "postgresql://postgres:password@db:5432/mydb"
         
