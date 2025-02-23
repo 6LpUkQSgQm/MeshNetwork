@@ -33,6 +33,7 @@ def create_app():
         db.init_app(app)
         bcrypt.init_app(app)
         jwt.init_app(app)
+        app.logger.info(f"CORS_ALLOWED_ORIGINS: {app.config.get('CORS_ALLOWED_ORIGINS')}")
         cors_allowed_origins = app.config.get("CORS_ALLOWED_ORIGINS", "*")
         socketio.init_app(
             app,
@@ -42,7 +43,7 @@ def create_app():
         CORS(
             app,
             supports_credentials=True,
-            resources={r"/api/*": {"origins": cors_allowed_origins}},
+            origins=cors_allowed_origins,
         )
     except Exception as e:
         app.logger.error(f"Error initializing extensions: {e}")

@@ -36,7 +36,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
       toast.success(t("Login successful!"));
 
       const redirectPath = location.state?.from?.pathname || "/";
-      console.log("Redirecting to:", redirectPath);
       navigate(redirectPath, { replace: true });
     } catch {
       toast.error(t("Invalid username or password."));

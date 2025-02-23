@@ -8,9 +8,16 @@ interface Message {
   username: string;
 }
 
+interface FetchMessagesResponse {
+  messages: Message[];
+  page: number;
+  pages: number;
+  total?: number;
+}
+
 interface MessageContextProps {
   messages: Message[];
-  fetchMessagesContext: (token: string, page?: number, perPage?: number) => Promise<Message[] | void>;
+  fetchMessagesContext: (token: string, page?: number, perPage?: number) => Promise<FetchMessagesResponse | void>;
   addMessage: (message: Message) => void;
   loading: boolean;
   error: string | null;
@@ -28,12 +35,12 @@ export const MessageProvider: React.FC<MessageProviderProps> = ({ children }) =>
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchMessagesContext = async (token: string, page = 1, perPage = 10): Promise<Message[] | void> => {
+  const fetchMessagesContext = async (token: string, page = 1, perPage = 10): Promise<FetchMessagesResponse | void> => {
     setLoading(true);
     setError(null);
     try {
       const response = await fetchMessages(token, page, perPage);
-      return response.data.messages;
+      return response.data;
     } catch (err: unknown) {
         if (err instanceof AxiosError && err.response?.data?.msg) {
             setError(err.response.data.msg);

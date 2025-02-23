@@ -2,7 +2,7 @@ import { useError } from "../context/ErrorContext";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL || "https://raspberrypi.local:5003/api",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -58,6 +58,7 @@ export const useApi = () => {
     values: RegisterValues
   ): Promise<AxiosResponse> => {
     try {
+      console.log("API URL utilisée :", process.env.REACT_APP_API_BASE_URL);
       return await api.post("/register", values);
     } catch (err: unknown) {
       if (err instanceof AxiosError && err.response?.data?.msg) {

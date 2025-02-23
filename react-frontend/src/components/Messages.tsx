@@ -18,6 +18,7 @@ interface FetchMessagesResponse {
   messages: Message[];
   page: number;
   pages: number;
+  total?: number;
 }
 
 const Messages: React.FC = () => {
@@ -35,10 +36,8 @@ const Messages: React.FC = () => {
   });
 
   useEffect(() => {
-    if (token) {
-      loadInitialMessages();
-    }
-  }, [token]);
+    loadInitialMessages();
+  }, []);
 
   useEffect(() => {
     if (token && !user) {
@@ -49,7 +48,7 @@ const Messages: React.FC = () => {
   useEffect(() => {
     if (token && user) {
       socket.on("new_message", (newMessage: Message) => {
-        setMessages((prevMessages = []) => {
+        setMessages((prevMessages) => {
           const isDuplicate = prevMessages.some(
             (msg) => msg.id === newMessage.id
           );
@@ -102,6 +101,7 @@ const Messages: React.FC = () => {
       const data = await fetchMessagesContext(token!, 1, 10) as FetchMessagesResponse | void;
       if (data) {
         setMessages(data.messages);
+        console.log("Initial messages loaded:", data);
         setCurrentPage(2);
         setHasMore(data.page < data.pages);
       }
@@ -151,7 +151,7 @@ const Messages: React.FC = () => {
         <MessageList messages={messages} />
       </InfiniteScroll>
       {loading &&
-        messages.length === 0 && ( // Loader pour le chargement initial
+        messages.length === 0 && (
           <div
             style={{
               display: "flex",
